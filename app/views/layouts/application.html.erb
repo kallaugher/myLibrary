@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyLibrary</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+      @import 'https://fonts.googleapis.com/css?family=Homemade+Apple|Raleway|Satisfy';
+    </style>
+  </head>
+
+  <body>
+    <div class="welcome-background">
+      <h1>myLibrary</h1>
+    </div>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Home</a></li>
+      <% if logged_in? %>
+        <li role="presentation"><a href="#">Sign Out</a></li>
+        <li role="presentation"><a href="#">Your Books</a></li>
+        <li role="presentation" class="pull-right"><%= link_to "Hi #{current_user.name.capitalize}", user_path(current_user) %> </li>
+      <% end %>
+    </ul>
+    <div class="container"><%= yield %></div>
+  </body>
+</html>
